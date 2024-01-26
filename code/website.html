@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonster</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Sonster</h1>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonster</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white; /* Set default text color to white */
+            font-family: Arial, sans-serif;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 50px; /* Adjust as needed */
+            font-size: 2rem; /* Adjust font size as needed */
+            color: black; /* Override text color to black */
+        }
+    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #uploadForm {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #previewImage {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="uploadForm">
+        <h2>Upload an Image</h2>
+        <input type="file" id="imageFile" accept="image/*"><br><br>
+        <button onclick="uploadImage()">Upload Image</button>
+    </div>
+
+    <img id="previewImage" src="#" alt="Preview Image" style="display:none">
+
+    <script>
+        function uploadImage() {
+            var fileInput = document.getElementById('imageFile');
+            var file = fileInput.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var previewImage = document.getElementById('previewImage');
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                console.log('No file selected');
+            }
+        }
+    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #uploadForm {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #previewImageContainer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #previewImage {
+            max-width: 200px; /* Set maximum width for the image */
+            border: 2px solid black; /* Add border around the image */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="uploadForm">
+        <h2>Upload an Image</h2>
+        <label for="nickname">Nickname:</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Enter your nickname"><br><br>
+        <input type="file" id="imageFile" accept="image/*"><br><br>
+        <button onclick="uploadImage()">Upload Image</button>
+    </div>
+
+    <div id="previewImageContainer" style="display:none;">
+        <div id="nicknameDisplay"></div>
+        <img id="previewImage" src="#" alt="Preview Image">
+    </div>
+
+    <script>
+        function uploadImage() {
+            var fileInput = document.getElementById('imageFile');
+            var file = fileInput.files[0];
+            var nickname = document.getElementById('nickname').value;
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var previewImageContainer = document.getElementById('previewImageContainer');
+                    var nicknameDisplay = document.getElementById('nicknameDisplay');
+                    var previewImage = document.getElementById('previewImage');
+
+                    nicknameDisplay.textContent = "Nickname: " + nickname;
+                    previewImage.src = e.target.result; // Set the image source
+                    previewImageContainer.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                console.log('No file selected');
+            }
+        }
+    </script>
+</body>
+</html>
+<script>
+    function uploadImage() {
+        var fileInput = document.getElementById('imageFile');
+        var file = fileInput.files[0];
+        var nickname = document.getElementById('nickname').value;
+        var previewImage = document.getElementById('previewImage');
+        var nicknameDisplay = document.getElementById('nicknameDisplay');
+
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                nicknameDisplay.textContent = "Nickname: " + nickname;
+                previewImage.src = e.target.result; // Set the image source
+                previewImage.style.display = 'block'; // Make the image visible
+            }
+            reader.readAsDataURL(file);
+        } else {
+            console.log('No file selected');
+        }
+    }
+</script>
